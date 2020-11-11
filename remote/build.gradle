@@ -1,0 +1,23 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation project(':data')
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofit2Version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit2Version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit2Version"
+
+    implementation "javax.inject:javax.inject:$javaxInjectVersion"
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    testImplementation "junit:junit:$junitVersion"
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
