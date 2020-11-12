@@ -8,7 +8,7 @@ ext {
         appVersionName = "1.0"
 
         // libs
-        daggerVersion = "2.16"
+        daggerVersion = "2.26"
         retrofit2Version = "2.4.0"
         rxJavaVersion = "2.2.0"
         rxAndroidVersion = "2.1.0"

@@ -20,16 +20,19 @@ class VehiclesViewModel @Inject constructor(
     private val getCurrentVehiclesUseCase: GetCurrentVehiclesUseCase,
     private val mapper: VehicleMapper
 ) : ViewModel() {
+    init {
+        getVehicles()
+    }
 
     val vehiclesLiveData = MutableLiveData<Resource<List<Vehicle>>>()
 
-    fun getVehicles() {
+    private fun getVehicles() {
         getCurrentVehiclesUseCase
             .buildUseCase()
             .map { it.map { vehicle -> mapper.to(vehicle) } }
             .map { Resource.success(it) }
             .doOnSubscribe {
-                vehiclesLiveData.postValue(Resource.loading())
+               // vehiclesLiveData.postValue(Resource.loading())
             }
             .doOnSuccess {
                 it?.let {

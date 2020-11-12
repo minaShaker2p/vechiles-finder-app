@@ -5,7 +5,6 @@ import com.rezkalla.vehiclesfinder.application.VehiclesApplication
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
-import dagger.android.AndroidInjector
 
 import javax.inject.Singleton
 
@@ -13,22 +12,22 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AndroidInjectionModule::class,
+        ActivityBuilder::class,
+        NetworkModule::class,
         DomainModule::class,
         DataModule::class,
         RemoteModule::class,
         AppModule::class
     ]
 )
-interface AppComponent : AndroidInjector<VehiclesApplication> {
+interface AppComponent {
+
+    fun inject(app: VehiclesApplication)
 
     @Component.Builder
     interface Builder {
-
         @BindsInstance
-        fun application(app: Application): Builder
-
+        fun application(application: Application): Builder
         fun build(): AppComponent
     }
-
-    override fun inject(app: VehiclesApplication)
 }
