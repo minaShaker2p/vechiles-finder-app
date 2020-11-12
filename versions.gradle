@@ -35,6 +35,7 @@ ext {
 
         // Other
         javaxInjectVersion = "1"
+        google_services_version="17.0.0"
 
 
         // Architecture components
@@ -42,4 +43,5 @@ ext {
         archCoreVersion = "2.0.0"
         lifecycleVersion = "2.2.0"
        okhttpVersion = '3.10.0'
+
     }

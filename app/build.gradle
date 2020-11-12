@@ -76,6 +76,11 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayoutVersion"
     implementation "androidx.recyclerview:recyclerview:$recyclerviewVersion"
 
+    /**
+     * google maps
+     */
+    implementation "com.google.android.gms:play-services-maps:$google_services_version"
+
     // test
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "org.mockito:mockito-core:$mockitoVersion"
