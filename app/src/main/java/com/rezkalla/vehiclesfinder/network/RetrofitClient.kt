@@ -4,6 +4,7 @@ package com.rezkalla.vehiclesfinder.network
 import com.google.gson.GsonBuilder
 import com.rezkalla.vehiclesfinder.BuildConfig
 import okhttp3.OkHttpClient
+import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -21,6 +22,14 @@ class RetrofitClient(
         if (BuildConfig.DEBUG) {
             httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
             httpClient.addInterceptor(httpLoggingInterceptor)
+        }
+        httpClient.addInterceptor { chain ->
+            val original: Request = chain.request()
+            val requestBuilder: Request.Builder = original.newBuilder()
+                .header("Content-Type", "application/json")
+                .header("secret-key", BuildConfig.MY_KEY)
+            val request: Request = requestBuilder.build()
+            chain.proceed(request)
         }
 
         val gson = GsonBuilder()

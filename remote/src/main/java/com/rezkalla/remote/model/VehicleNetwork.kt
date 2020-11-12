@@ -12,11 +12,11 @@ data class VehicleNetwork(
     @SerializedName("zoneId")
     val zoneId: String,
     @SerializedName("resolution")
-    val resolution: String,
+    val resolution: String?,
     @SerializedName("resolvedBy")
-    val resolvedBy: String,
+    val resolvedBy: String?,
     @SerializedName("resolvedAt")
-    val resolvedAt: String,
+    val resolvedAt: String?,
     @SerializedName("battery")
     val battery: Int,
     @SerializedName("state")
