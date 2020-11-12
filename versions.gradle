@@ -41,4 +41,5 @@ ext {
         roomVersion = "2.3.0-alpha03"
         archCoreVersion = "2.0.0"
         lifecycleVersion = "2.2.0"
+       okhttpVersion = '3.10.0'
     }
