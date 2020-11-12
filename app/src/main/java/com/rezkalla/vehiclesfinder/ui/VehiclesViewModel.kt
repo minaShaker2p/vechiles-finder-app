@@ -27,7 +27,6 @@ class VehiclesViewModel @Inject constructor(
     val vehiclesLiveData = MutableLiveData<Resource<List<Vehicle>>>()
 
     private fun getVehicles() {
-        //vehiclesLiveData.postValue(Resource.loading())
         getCurrentVehiclesUseCase
             .buildUseCase()
             .map { it.map { vehicle -> mapper.to(vehicle) } }

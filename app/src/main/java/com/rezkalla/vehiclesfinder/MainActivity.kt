@@ -2,9 +2,11 @@ package com.rezkalla.vehiclesfinder
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
@@ -29,6 +31,8 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector, OnMapReadyCallback
         return androidInjector
     }
 
+    private var map: GoogleMap? = null
+
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory<VehiclesViewModel>
@@ -45,14 +49,15 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector, OnMapReadyCallback
         viewModel.vehiclesLiveData.observe(this, Observer { results ->
             when (results.status) {
                 Status.SUCCESS -> {
-                    Log.d("viewModel", "success")
-
+                    addVehicles(results.data?.map {
+                        LatLng(it.latitude, it.longitude)
+                    })
                 }
                 Status.ERROR -> {
-                    Log.d("viewModel", "error")
+                    Toast.makeText(this,results.message,Toast.LENGTH_LONG).show()
                 }
                 Status.LOADING -> {
-                    Log.d("viewModel", "loading")
+                    Log.d("vehicleFinder", "loading")
                 }
             }
         })
@@ -62,15 +67,22 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector, OnMapReadyCallback
         mapFragment?.getMapAsync(this)
     }
 
-    override fun onMapReady(googleMap: GoogleMap?) {
-        googleMap?.apply {
-            val sydney = LatLng(-33.852, 151.211)
-            addMarker(
-                MarkerOptions()
-                    .position(sydney)
-                    .title("Marker in Sydney")
-            )
+    private fun addVehicles(vehicleLatLng: List<LatLng>?) {
+        map?.let { googleMap ->
+            vehicleLatLng?.forEach { latlng ->
+                googleMap.apply {
+                    addMarker(
+                        MarkerOptions()
+                            .position(latlng)
+                    )
+                    googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latlng, 6f))
+                }
+            }
         }
+    }
+
+    override fun onMapReady(googleMap: GoogleMap?) {
+        map = googleMap
     }
 
 }
