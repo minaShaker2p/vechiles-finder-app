@@ -11,14 +11,10 @@ data class Resource<out T>(val status: Status, val data: T? = null, val message:
             return Resource(Status.ERROR, data, msg)
         }
 
-        fun <T> loading(): Resource<T> {
-            return Resource(Status.LOADING, null, null)
-        }
     }
 }
 
 enum class Status {
-    LOADING,
     ERROR,
     SUCCESS
 }

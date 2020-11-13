@@ -58,12 +58,8 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 Status.ERROR -> {
                     Toast.makeText(requireActivity(), results.message, Toast.LENGTH_LONG).show()
                 }
-                Status.LOADING -> {
-                    Log.d("vehicleFinder", "loading")
-                }
             }
         })
-
         val mapFragment: SupportMapFragment? = childFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(this)

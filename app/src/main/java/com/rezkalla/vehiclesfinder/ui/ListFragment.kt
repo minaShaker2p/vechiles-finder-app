@@ -51,6 +51,7 @@ class ListFragment : Fragment() {
         viewModel.vehiclesLiveData.observe(requireActivity(), Observer { results ->
             when (results.status) {
                 Status.SUCCESS -> {
+                    progressBar.visibility=View.GONE
                     results.data?.let {
                         vehicleAdapter.update(it)
                     }
@@ -58,16 +59,13 @@ class ListFragment : Fragment() {
                 Status.ERROR -> {
                     Toast.makeText(requireActivity(), results.message, Toast.LENGTH_LONG).show()
                 }
-                Status.LOADING -> {
-                    Log.d("vehicleFinder", "loading")
-                }
             }
         })
     }
 
     private fun setupRecyclerView() {
         rclVehicles.apply {
-            layoutManager =  LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
             addItemDecoration(VerticalSpaceItemDecoration(24))
             adapter = vehicleAdapter
         }
