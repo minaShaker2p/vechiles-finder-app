@@ -24,7 +24,9 @@ this application divided to 4 Modules based on **Clean Architecture** layers ins
 * google Maps.
 
 ## Overview
-project code architecture follow clean architecture inspired by onion architecture by Uncle bob
+project code architecture follow clean architecture inspired by onion architecture by Uncle bob .
+
+
 ![Clean Architecture](https://koenig-media.raywenderlich.com/uploads/2019/06/Clean-Architecture-graph.png)
 
 
@@ -32,6 +34,8 @@ project code architecture follow clean architecture inspired by onion architectu
 
 ## References
 [Raywenderlich](https://www.raywenderlich.com/3595916-clean-architecture-tutorial-for-android-getting-started)
+
+[Android App, Clean Architecture + mvvm + Modularization](https://medium.com/@ruddns8213/android-app-clean-architecture-mvvm-modularization-sample-acced8ed3970)
 
 
 
