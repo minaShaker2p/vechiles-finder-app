@@ -33,5 +33,4 @@ class VehiclesViewModel @Inject constructor(
             }.subscribe()
     }
 
-
 }
