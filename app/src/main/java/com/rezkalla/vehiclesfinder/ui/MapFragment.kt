@@ -2,7 +2,6 @@ package com.rezkalla.vehiclesfinder.ui
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +18,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.rezkalla.vehiclesfinder.R
 import com.rezkalla.vehiclesfinder.model.Status
 import com.rezkalla.vehiclesfinder.model.Vehicle
+import com.rezkalla.vehiclesfinder.presentation.VehiclesViewModel
 import com.rezkalla.vehiclesfinder.utils.ViewModelFactory
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject

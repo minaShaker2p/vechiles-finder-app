@@ -2,7 +2,6 @@ package com.rezkalla.vehiclesfinder.ui
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rezkalla.vehiclesfinder.R
 import com.rezkalla.vehiclesfinder.model.Status
+import com.rezkalla.vehiclesfinder.presentation.VehiclesViewModel
 import com.rezkalla.vehiclesfinder.utils.VerticalSpaceItemDecoration
 import com.rezkalla.vehiclesfinder.utils.ViewModelFactory
 import dagger.android.support.AndroidSupportInjection

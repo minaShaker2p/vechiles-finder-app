@@ -1,4 +1,4 @@
-package com.rezkalla.vehiclesfinder.ui
+package com.rezkalla.vehiclesfinder.presentation
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
