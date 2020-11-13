@@ -18,6 +18,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.rezkalla.vehiclesfinder.R
 import com.rezkalla.vehiclesfinder.model.Status
+import com.rezkalla.vehiclesfinder.model.Vehicle
 import com.rezkalla.vehiclesfinder.utils.ViewModelFactory
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
@@ -52,9 +53,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         viewModel.vehiclesLiveData.observe(requireActivity(), Observer { results ->
             when (results.status) {
                 Status.SUCCESS -> {
-                    addVehicles(results.data?.map {
-                        LatLng(it.latitude, it.longitude)
-                    })
+                    addVehicles(results.data)
                 }
                 Status.ERROR -> {
                     Toast.makeText(requireActivity(), results.message, Toast.LENGTH_LONG).show()
@@ -74,19 +73,19 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         map = googleMap
     }
 
-    private fun addVehicles(vehicleLatLng: List<LatLng>?) {
+    private fun addVehicles(vehicles: List<Vehicle>?) {
         map?.let { googleMap ->
-            vehicleLatLng?.forEach { latlng ->
+            vehicles?.forEach { vehicle ->
+                val latlng = LatLng(vehicle.longitude, vehicle.longitude)
                 googleMap.apply {
                     addMarker(
                         MarkerOptions()
                             .position(latlng)
+                            .title(vehicle.state)
                     )
                     googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latlng, 6f))
                 }
             }
         }
     }
-
-
 }

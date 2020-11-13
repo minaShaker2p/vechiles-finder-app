@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">VehiclesFinder</string>
+    <string name="vehicle_id">Vehicle ID</string>
+    <string name="state">State</string>
+    <string name="battery">Battery</string>
+    <string name="zone">Zone</string>
 </resources>
