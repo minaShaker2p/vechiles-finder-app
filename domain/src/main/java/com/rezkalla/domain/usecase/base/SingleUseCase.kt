@@ -9,7 +9,7 @@ abstract class SingleUseCase<T, in Input> constructor(
 ) {
     protected abstract fun build(input: Input? = null): Single<T>
 
-    fun buildUseCase(input: Input? = null): Single<T> {
+    operator fun invoke(input: Input? = null): Single<T> {
         return build(input)
             .subscribeOn(backgroundScheduler)
             .observeOn(foregroundScheduler)

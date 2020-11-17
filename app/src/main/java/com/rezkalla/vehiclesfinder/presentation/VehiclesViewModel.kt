@@ -20,8 +20,7 @@ class VehiclesViewModel @Inject constructor(
     }
 
     private fun getVehicles() {
-        getCurrentVehiclesUseCase
-            .buildUseCase()
+        getCurrentVehiclesUseCase()
             .map { it.map { vehicle -> mapper.to(vehicle) } }
             .map { Resource.success(it) }
             .doOnSuccess {

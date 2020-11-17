@@ -13,7 +13,7 @@ import javax.inject.Inject
  *  so in the future it is so easy to add offline feature in our app
  */
 class CurrentVehicleRepositoryImpl @Inject constructor(
-    private val remoteDataSource: RemoteDataSource,
+    private val remoteDataSource: RemoteDataSource, 
     private val vehicleDataMapper: VehicleDataMapper
 ) : CurrentVehiclesRepository {
 
